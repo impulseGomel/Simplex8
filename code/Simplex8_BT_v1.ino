@@ -24,6 +24,7 @@ const byte NUM_SENS = 8;
 
 // pins PCB for Analog line
 byte pins[] = {A7, A6, A5, A4, A3, A2, A1, A0};
+int W[]={-7, -5, -3, -1, 1, 3, 5, 7};
 int sensors[NUM_SENS];
 
 // address in EEPROM to save and load calibrations
