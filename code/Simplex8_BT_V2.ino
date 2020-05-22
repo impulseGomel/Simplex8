@@ -50,6 +50,7 @@ const char cmdSTOP = 's';
 void drive(int left, int right);
 void pinsSetup();
 void loadEEPROM();
+void saveEEPROM();
 bool pressButton();
 bool isCmdBT(char cmd);
 void lfr_relay();
@@ -111,6 +112,15 @@ void loadEEPROM() {
   for (int i = 0; i < NUM_SENS; ++i) {
     EEPROM.get(address, calibratedMinimum[i]);
     EEPROM.get(address + 2, calibratedMaximum[i]);
+    address += 4;
+  }
+}
+
+void saveEEPROM() {
+  unsigned address = ADDRESS;
+  for (int i = 0; i < NUM_SENS; i++) {
+    EEPROM.put(address, calibratedMinimum[i]);
+    EEPROM.put(address + 2, calibratedMaximum[i]);
     address += 4;
   }
 }
